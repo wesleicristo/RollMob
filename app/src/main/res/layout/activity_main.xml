@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:text="@string/d4"
         android:id="@+id/btnd4"
-        android:onClick="d4.rolar"
+        android:onClick="rolar"
         android:layout_alignTop="@+id/button2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

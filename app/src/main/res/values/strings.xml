@@ -8,5 +8,6 @@
     <string name="d20">D20</string>
     <string name="resultado">Resultado</string>
     <string name="detalhe">Detalhe</string>
+    <integer name="tempo">100</integer>
 
 </resources>
