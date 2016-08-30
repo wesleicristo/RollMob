@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/d6"
-        android:id="@+id/button2"
+        android:id="@+id/btnd6"
         android:onClick="rolar"
         android:layout_above="@+id/progressBar"
         android:layout_alignLeft="@+id/btnd12"
@@ -55,7 +55,7 @@
         android:text="@string/d4"
         android:id="@+id/btnd4"
         android:onClick="rolar"
-        android:layout_alignTop="@+id/button2"
+        android:layout_alignTop="@+id/btnd6"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -75,9 +75,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/resultado"
         android:id="@+id/txtvresultado"
-        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/txtvdetalhe"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp" />
+        android:textSize="@dimen/abc_action_bar_progress_bar_size" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -99,6 +101,16 @@
         android:layout_above="@+id/btnd12"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/textView"
+        android:layout_above="@+id/btnd6"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
