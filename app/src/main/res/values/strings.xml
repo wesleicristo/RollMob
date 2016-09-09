@@ -9,5 +9,6 @@
     <string name="resultado">Resultado</string>
     <string name="detalhe">Detalhe</string>
     <integer name="tempo">100</integer>
+    <integer name="tamDado">80</integer>
 
 </resources>

@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="leitebatido.rollmob.MainActivity">
+    tools:context="leitebatido.rollmob.MainActivity"
+    android:id="@+id/view"><![CDATA[
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/d12"
-        android:id="@+id/btnd12"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="rolar" />
-
-    <Button
+    Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/d6"
@@ -29,37 +21,13 @@
         android:layout_alignLeft="@+id/btnd12"
         android:layout_alignStart="@+id/btnd12" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/d20"
-        android:id="@+id/btnd20"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="rolar" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/d10"
-        android:id="@+id/btnd10"
-        android:layout_alignBottom="@+id/btnd12"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="rolar" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/d4"
-        android:id="@+id/btnd4"
-        android:onClick="rolar"
-        android:layout_alignTop="@+id/btnd6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <Button
+
+
+
+    Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/d8"
@@ -69,49 +37,126 @@
         android:layout_alignLeft="@+id/btnd20"
         android:layout_alignStart="@+id/btnd20" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/resultado"
-        android:id="@+id/txtvresultado"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@+id/txtvdetalhe"
-        android:layout_centerHorizontal="true"
-        android:textSize="@dimen/abc_action_bar_progress_bar_size" />
+    ]]>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/detalhe"
-        android:id="@+id/txtvdetalhe"
+        android:id="@+id/frameLayout"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/frameLayout2">
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/detalhe"
+            android:id="@+id/txtvdetalhe"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/resultado"
+            android:id="@+id/txtvresultado"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@+id/txtvdetalhe"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/abc_action_bar_progress_bar_size"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:indeterminate="false"
-        android:max="100"
-        android:layout_above="@+id/btnd12"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6142274872770859/5581807329">
+    </com.google.android.gms.ads.AdView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView"
-        android:layout_above="@+id/btnd6"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/adView"
+        android:id="@+id/frameLayout2">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pbtempo"
+            android:layout_gravity="center"
+            android:background="@android:color/background_light"
+            android:progressBackgroundTint="@android:color/holo_orange_light"
+            android:max="100"
+            android:indeterminate="false" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/iD4"
+            android:layout_gravity="left|top"
+            android:src="@drawable/d4"
+            android:onClick="rolar"
+            android:clickable="true" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/iD6"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/d6"
+            android:onClick="rolar"
+            android:clickable="true" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/iD8"
+            android:layout_gravity="right|top"
+            android:src="@drawable/d8"
+            android:onClick="rolar"
+            android:clickable="true" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/iD10"
+            android:layout_gravity="left|bottom"
+            android:src="@drawable/d10"
+            android:onClick="rolar"
+            android:clickable="true" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/iD12"
+            android:layout_gravity="center_horizontal|bottom"
+            android:src="@drawable/d12"
+            android:onClick="rolar"
+            android:clickable="true" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/iD20"
+            android:layout_gravity="right|bottom"
+            android:src="@drawable/d20"
+            android:onClick="rolar"
+            android:clickable="true" />
+
+    </FrameLayout>
+
 
 </RelativeLayout>

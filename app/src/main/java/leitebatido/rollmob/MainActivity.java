@@ -5,18 +5,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView testetexto;
 
-    private Button botao;
+    private ImageView botao;
     private ProgressBar pbTempo;
     private TextView txvResultado;
     private TextView txvDetalhe;
     private int cont=0;
+
+    private Color corFundo;
+
+    private RelativeLayout screenView;
 
     private boolean limpo = true;
 
@@ -44,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
             Random gerador = new Random();
             valor = gerador.nextInt(nLados)+1;
             nDados++;
+        }
+        private int getnLados(){
+            return nLados;
         }
         private int getValor(){
             return valor;
@@ -74,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
                         public void run() {
                             pbTempo.setProgress(cont);
                             limpo=false;
+                            if(cont <= 90){
+                                screenView.setBackgroundColor(getResources().getColor(R.color.bGcolor));
+                            }
                         }
                     });
                 }
@@ -81,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (cont <= 0 && !limpo){
-                            limparBotoes();
                             for (int i = 0;i < dados.length; i++){
                                 dados[i].limpaDados();
                             }
@@ -100,84 +114,109 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pbTempo = (ProgressBar)findViewById(R.id.progressBar);
+        pbTempo = (ProgressBar)findViewById(R.id.pbtempo);
         txvResultado = (TextView)findViewById(R.id.txtvresultado);
         txvDetalhe = (TextView)findViewById(R.id.txtvdetalhe);
         thTempo.start();
-        testetexto = (TextView)findViewById(R.id.textView);
-    }
+        screenView = (RelativeLayout)findViewById(R.id.view);
 
-    private void limparBotoes(){
-        Button d4 = (Button)findViewById(R.id.btnd4);
-        Button d6 = (Button)findViewById(R.id.btnd6);
-        Button d8 = (Button)findViewById(R.id.btnd8);
-        Button d10 = (Button)findViewById(R.id.btnd10);
-        Button d12 = (Button)findViewById(R.id.btnd12);
-        Button d20 = (Button)findViewById(R.id.btnd20);
-        d4.setText(R.string.d4);
-        d6.setText(R.string.d6);
-        d8.setText(R.string.d8);
-        d10.setText(R.string.d10);
-        d12.setText(R.string.d12);
-        d20.setText(R.string.d20);
+        AdView adView = (AdView)findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     public void rolar(View view){
-        botao = (Button)view;
+        botao = (ImageView)view;
         if (limpo)detalhe = "D: ";
         switch (botao.getId()){
-            case R.id.btnd4:{
+            case R.id.iD4:{
                 d4.Rolar();
                 resultado += d4.getValor();
                 txvResultado.setText(String.valueOf(resultado));
                 if (!limpo)detalhe = detalhe + ",";
+                if (d4.getValor() == d4.getnLados()){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.ACcrit));
+                } else if (d4.getValor() == 1){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.FLcrit));
+                } else {
+                    screenView.setBackgroundColor(getResources().getColor(R.color.bGcolor));
+                }
                 detalhe = detalhe + d4.getValor();
-                botao.setText(d4.getNDados()+"D4");
                 break;
             }
-            case R.id.btnd6: {
+            case R.id.iD6: {
                 d6.Rolar();
                 resultado += d6.getValor();
                 txvResultado.setText(String.valueOf(resultado));
                 if (!limpo)detalhe = detalhe + ",";
+                if (d6.getValor() == d6.getnLados()){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.ACcrit));
+                } else if (d6.getValor() == 1){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.FLcrit));
+                } else {
+                    screenView.setBackgroundColor(getResources().getColor(R.color.bGcolor));
+                }
                 detalhe = detalhe + d6.getValor();
-                botao.setText(d6.getNDados()+"D6");
                 break;
             }
-            case R.id.btnd8: {
+            case R.id.iD8: {
                 d8.Rolar();
                 resultado += d8.getValor();
                 txvResultado.setText(String.valueOf(resultado));
                 if (!limpo)detalhe = detalhe + ",";
+                if (d8.getValor() == d8.getnLados()){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.ACcrit));
+                } else if (d8.getValor() == 1){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.FLcrit));
+                } else {
+                    screenView.setBackgroundColor(getResources().getColor(R.color.bGcolor));
+                }
                 detalhe = detalhe + d8.getValor();
-                botao.setText(d8.getNDados()+"D8");
                 break;
             }
-            case R.id.btnd10: {
+            case R.id.iD10: {
                 d10.Rolar();
                 resultado += d10.getValor();
                 txvResultado.setText(String.valueOf(resultado));
                 if (!limpo)detalhe = detalhe + ",";
+                if (d10.getValor() == d10.getnLados()){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.ACcrit));
+                } else if (d10.getValor() == 1){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.FLcrit));
+                } else {
+                    screenView.setBackgroundColor(getResources().getColor(R.color.bGcolor));
+                }
                 detalhe = detalhe + d10.getValor();
-                botao.setText(d10.getNDados()+"D10");
                 break;
             }
-            case R.id.btnd12: {
+            case R.id.iD12: {
                 d12.Rolar();
                 resultado += d12.getValor();
                 txvResultado.setText(String.valueOf(resultado));
                 if (!limpo)detalhe = detalhe + ",";
+                if (d12.getValor() == d12.getnLados()){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.ACcrit));
+                } else if (d12.getValor() == 1){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.FLcrit));
+                } else {
+                    screenView.setBackgroundColor(getResources().getColor(R.color.bGcolor));
+                }
                 detalhe = detalhe + d12.getValor();
-                botao.setText(d12.getNDados()+"D12");
                 break;
             }
-            case R.id.btnd20: {
+            case R.id.iD20: {
                 d20.Rolar();
                 resultado += d20.getValor();
                 txvResultado.setText(String.valueOf(resultado));
                 if (!limpo)detalhe = detalhe + ",";
+                if (d20.getValor() == d20.getnLados()){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.ACcrit));
+                } else if (d20.getValor() == 1){
+                    screenView.setBackgroundColor(getResources().getColor(R.color.FLcrit));
+                } else {
+                    screenView.setBackgroundColor(getResources().getColor(R.color.bGcolor));
+                }
                 detalhe = detalhe + d20.getValor();
-                botao.setText(d20.getNDados()+"D20");
                 break;
             }
             default:{
